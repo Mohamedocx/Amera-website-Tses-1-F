@@ -1,0 +1,903 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.8/ScrollMagic.min.js">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="">
+    <title>Document</title>
+</head>
+<!-- styke css -->
+<style>
+:root {
+  --primary: #212121;
+  --secondary: #515151;
+  --white: #ffffff;
+}
+* {
+  margin: 0;
+  padding: 0;
+}
+body,
+html {
+  overflow-x: hidden;
+}
+body {
+  background-color: var(--primary);
+  height: 100%;
+  color: var(--white);
+}
+body::-webkit-scrollbar {
+  width: 4px;
+}
+body::-webkit-scrollbar-track {
+  border-radius: 10px;
+}
+body::-webkit-scrollbar-thumb {
+  background: var(--secondary);
+  border-radius: 10px;
+}
+body::-webkit-scrollbar-thumb:hover {
+  background: var(--secondary);
+}
+::selection {
+  background: var(--primary);
+  color: var(--white);
+}
+.overflow-hidden {
+  overflow: hidden !important;
+  position: fixed;
+  width: 100%;
+}
+h1,
+h2,
+h3 {
+  margin-bottom: 30px;
+  font-size: 24px;
+  line-height: 1;
+  text-transform: capitalize;
+  -webkit-text-transform: capitalize;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  -webkit-text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+  color: var(--white);
+  letter-spacing: 1.2px;
+  -webkit-text-transform: uppercase;
+  text-transform: uppercase;
+}
+p {
+  font-size: 45px;
+  line-height: 1.4;
+  font-family: "Titillium Web", sans-serif;
+  font-weight: 200;
+}
+.pinWrapper {
+  height: 100%;
+  width: 100%;
+  position: relative;
+  z-index: 11;
+}
+.scrollmagic-pin-spacer {
+  position: absolute !important;
+  clip: rect(auto, auto, auto, auto);
+}
+.event {
+  position: relative;
+  overflow: hidden;
+  height: 100svh;
+  width: 100vw;
+  z-index: 1;
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+.event::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+#section1.event::before {
+  background-color: rgb(21 22 28 / 15%);
+}
+#section2.event::before {
+  background-color: rgb(21 22 28 / 34%);
+}
+#section3.event::before {
+  background-color: rgb(86 82 76 / 57%);
+}
+#section4.event::before {
+  background-color: rgb(120 115 103 / 58%);
+}
+#section5.event::before {
+  background-color: rgb(130 125 113 / 68%);
+}
+#section6.event::before {
+  background-color: rgb(140 135 123 / 68%);
+}
+#section7.event::before {
+  background-color: rgb(150 145 133 / 68%);
+}
+#section8.event::before {
+  background-color: rgb(160 155 143 / 68%);
+}
+#section9.event::before {
+  background-color: rgb(170 165 153 / 68%);
+}
+
+
+#section1 {
+  background-image: url("./img/1.jpg");
+}
+#section2 {
+  background-image: url("./img/2.jpg");
+}
+#section3 {
+  background-image: url("./img/3.jpg");
+}
+#section4 {
+  background-image: url("./img/4.jpg");
+}
+
+#section5 {
+  background-image: url("./img/5.jpg");
+}
+#section6 {
+  background-image: url("./img/6.jpg");
+}
+#section7 {
+  background-image: url("./img/7.jpg");
+}
+#section8 {
+  background-image: url("./img/8.jpg");
+}
+#section9 {
+  background-image: url("./img/9.jpg");
+}
+
+.image {
+  height: 100%;
+  width: 100%;
+  top: 0%;
+  left: 0%;
+  position: absolute;
+  background-size: cover;
+  background-position: center center;
+  transition: width 1s, height 1s;
+  -webkit-transition: width 1s, height 1s;
+  box-shadow: 2px 2px 10px 10px rgb(0 0 0 / 12%);
+  -webkit-box-shadow: 2px 2px 10px 10px rgb(0 0 0 / 12%);
+  transform-origin: center;
+  -webkit-transform-origin: center;
+  z-index: 8888;
+  overflow: hidden;
+  border-radius: 0;
+}
+.image:not(#loaderVideo) {
+  top: -50%;
+  width: 500px;
+  height: 500px;
+  left: auto;
+  right: 100px;
+  position: absolute;
+  border-radius: 12px;
+  transform: translate(0%, -50%);
+  -webkit-transform: translate(0%, -50%);
+}
+#section1 .image video {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  object-position: center center;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+#section2 .image {
+  background-image: url("./img/2.jpg");
+}
+#section3 .image {
+    background-image: url("./img/3.jpg");
+}
+#section4 .image {
+    background-image: url("./img/3.jpg");
+}
+#section5 .image {
+    background-image: url("./img/5.jpg");
+}
+#section6 .image {
+    background-image: url("./img/6.jpg");
+}
+#section7 .image {
+    background-image: url("./img/7.jpg");
+}
+#section8 .image {
+    background-image: url("./img/8.jpg");
+}
+#section9 .image {
+    background-image: url("./img/9.jpg");
+}
+
+
+
+
+
+
+/* Section Text */
+.text {
+  top: -50%;
+  left: 0;
+  position: absolute;
+  transform: translate(100px, -50%);
+  -webkit-transform: translate(100px, -50%);
+  width: 43%;
+}
+#section1 .text {
+  top: 50%;
+}
+
+/* Scroll Button */
+.scrollBtn {
+  position: absolute;
+  bottom: 2.5%;
+  left: 50%;
+  transform: translate(-50%, 0);
+  -webkit-transform: translate(-50%, 0);
+  width: 100px;
+  height: auto;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 10px;
+  z-index: 1;
+  transition: all ease-in-out 0.35s;
+  -webkit-transition: all ease-in-out 0.35s;
+}
+.scrollBtn.move {
+  visibility: hidden;
+  opacity: 0;
+}
+.scrollBtn span {
+  width: 12px;
+  height: 12px;
+  display: block;
+  border-bottom: 2px solid var(--white);
+  border-right: 2px solid var(--white);
+  transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+  animation: animate 2s infinite;
+  -webkit-animation: animate 2s infinite;
+  margin: auto;
+}
+.scrollBtn h6 {
+  font-size: 16px;
+  line-height: 1.5;
+  font-weight: 400;
+  font-family: "Titillium Web", sans-serif;
+  text-align: center;
+  text-transform: uppercase;
+  -webkit-text-transform: uppercase;
+  letter-spacing: 2px;
+}
+@keyframes animate {
+  0% {
+    opacity: 0;
+    transform: rotate(45deg) translate(-10px, -10px);
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: rotate(45deg) translate(10px, 10px);
+  }
+}
+@-webkit-keyframes animate {
+  0% {
+    opacity: 0;
+    transform: rotate(45deg) translate(-10px, -10px);
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: rotate(45deg) translate(10px, 10px);
+  }
+}
+
+/* Preloader */
+#preloader {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 9999;
+  background-color: transparent;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 1s;
+  -webkit-transition: all 1s;
+}
+#preloader img,
+#preloader video {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
+}
+#preloader::before {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  content: "";
+  z-index: 1;
+}
+.text-wrapper {
+  text-align: center;
+  height: 24px;
+  overflow: hidden;
+  transition: opacity 1s;
+  -webkit-transition: opacity 1s;
+}
+#first-text {
+  animation: moveUp 1s 1s forwards;
+  -webkit-animation: moveUp 1s 1s forwards;
+}
+#second-text {
+  opacity: 0;
+  transform: translateY(-30px);
+  -webkit-transform: translateY(-30px);
+  animation: scrollup 1s 1.2s forwards, moveUpAgain 1s 2.2s forwards;
+  -webkit-animation: scrollup 1s 1.2s forwards, moveUpAgain 1s 2.2s forwards;
+}
+@keyframes moveUp {
+  0% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-100px);
+    opacity: 0;
+  }
+}
+@-webkit-keyframes moveUp {
+  0% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-100px);
+    opacity: 0;
+  }
+}
+
+@keyframes scrollup {
+  100% {
+    transform: translateY(-54px);
+  }
+}
+@-webkit-keyframes scrollup {
+  100% {
+    transform: translateY(-54px);
+  }
+}
+
+@keyframes moveUpAgain {
+  0% {
+    transform: translateY(-54px);
+    opacity: 1;
+  }
+  60% {
+    transform: translateY(-54px);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-60px);
+    opacity: 0;
+  }
+}
+@-webkit-keyframes moveUpAgain {
+  0% {
+    transform: translateY(-54px);
+    opacity: 1;
+  }
+  60% {
+    transform: translateY(-54px);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-60px);
+    opacity: 0;
+  }
+}
+
+/* Media Query */
+@media screen and (max-width: 1399px) {
+  h2 {
+    font-size: 22px;
+  }
+  p {
+    font-size: 38px;
+  }
+  .text {
+    transform: translate(60px, -50%);
+    -webkit-transform: translate(60px, -50%);
+  }
+  .image:not(#loaderVideo) {
+    height: 450px;
+    width: 450px;
+    right: 80px;
+    transform: translate(0%, -50%);
+    -webkit-transform: translate(0%, -50%);
+  }
+}
+@media screen and (max-width: 1199px) {
+  h2 {
+    font-size: 20px;
+  }
+  p {
+    font-size: 34px;
+  }
+  .text {
+    transform: translate(40px, -50%);
+    -webkit-transform: translate(40px, -50%);
+    width: 44%;
+  }
+  .image:not(#loaderVideo) {
+    height: 400px;
+    width: 400px;
+    right: 60px;
+    transform: translate(0%, -50%);
+    -webkit-transform: translate(0%, -50%);
+  }
+}
+@media screen and (max-width: 991px) {
+  h2 {
+    font-size: 18px;
+  }
+  p {
+    font-size: 26px;
+  }
+  .text {
+    transform: translate(24px, -50%);
+    -webkit-transform: translate(24px, -50%);
+    width: 44%;
+  }
+  .image:not(#loaderVideo) {
+    height: 310px;
+    width: 310px;
+    right: 40px;
+    transform: translate(0%, -50%);
+    -webkit-transform: translate(0%, -50%);
+  }
+}
+@media screen and (max-width: 767px) {
+  h2 {
+    font-size: 16px;
+  }
+  p {
+    font-size: 22px;
+  }
+  .image:not(#loaderVideo) {
+    height: 220px;
+    width: 220px;
+  }
+}
+@media screen and (max-width: 576px) {
+  .text {
+    top: -36%;
+    width: 100%;
+    width: calc(100% - 80px);
+  }
+  #section1 .text {
+    top: 64%;
+  }
+  .image:not(#loaderVideo) {
+    top: -75%;
+    left: 24px;
+    right: auto;
+    transform: translate(0%, -25%);
+    -webkit-transform: translate(0%, -25%);
+  }
+}
+/* aboume */
+
+</style>
+<body dir="rtl">
+    <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:wght@200;400&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="./style.css">
+      </head>
+      
+      <body>
+        <section class="events-page">
+          <div id="section1" class="event">
+            <div class="pinWrapper">
+              <div class="text">
+                <h2> بيتك المستقبل</h2>
+                <p>نساعدك قي تحويل بيت احلامك الى واقع</p>
+              </div>
+              <div class="image" id="loaderVideo">
+                <video autoplay loop muted playsinline>
+                  <source src="https://www.yudiz.com/codepen/studio-r/bg-video.mp4" type="video/mp4">
+                </video>
+              </div>
+              <!-- Video -->
+            </div>
+            <div class="scrollBtn">
+              <h6>اسحب لاسفل</h6>
+              <span></span>
+            </div>
+          </div>
+          <!-- Section 01 -->
+          <div id="section2" class="event">
+            <div class="pinWrapper">
+              <div class="text">
+                <h2>غرف نوم</h2>
+                <p>تصاميم غرف نوم عصرية تحاكي المستقبل  لراحة المثيل لها</p>
+              </div>
+              <div class="image"></div>
+            </div>
+          </div>
+          <!-- Section 02 -->
+          <div id="section3" class="event">
+            <div class="pinWrapper">
+              <div class="text">
+                <h2>غرف نوم </h2>
+                <p>غرفة النوم التي يتمناها الجميع</p>
+              </div>
+              <div class="image"></div>
+            </div>
+          </div>
+          <!-- Section 03 -->
+          <div id="section4" class="event">
+            <div class="pinWrapper">
+              <div class="text">
+                <h2>حمامات</h2>
+                <p>تصاميم عصرية و اامنة</p>
+              </div>
+              <div class="image"></div>
+            </div>
+          </div>
+          <!-- Section 04 -->
+          <div id="section5" class="event">
+            <div class="pinWrapper">
+              <div class="text">
+                <h2>مطبخ</h2>
+                <p>مطابخ عصرية</p>
+              </div>
+              <div class="image"></div>
+            </div>
+          </div>
+          <!-- Section 05 -->
+          <div id="section5" class="event">
+            <div class="pinWrapper">
+              <div class="text">
+                <h2>غرف معيشة</h2>
+                <p>تصاميم غرف معيشة تلبي احتياجات الاسرة العصرية والافراد</p>
+              </div>
+              <div class="image"></div>
+            </div>
+          </div>
+          <!-- Section 06 -->
+          <div id="section7" class="event">
+            <div class="pinWrapper">
+              <div class="text">
+                <h2>غرف معيشة</h2>
+                <p>تصميم قمة في الفخامة</p>
+              </div>
+              <div class="image"></div>
+            </div>
+          </div>
+          <!-- Section 07 -->
+          <div id="section8" class="event">
+            <div class="pinWrapper">
+              <div class="text">
+                <h2>غرف معيشة</h2>
+                <p>تصاميم مختلفة جمال في التصميم لامثيل له </p>
+              </div>
+              <div class="image"></div>
+            </div>
+          </div>
+          <!-- Section 08 -->
+          <div id="section9" class="event">
+            <div class="pinWrapper">
+              <div class="text">
+                <h2>تصاميم مختلفة</h2>
+                <p>نساعدك لتحويل خيالك الى واقع </p>
+              </div>
+              <div class="image"></div>
+            </div>
+          </div>
+          <!-- Section 09 -->
+          
+           
+        </section>
+      
+        <!-- Loader -->
+        <div id="preloader">
+          <div class="text-wrapper">
+            <h1 id="first-text">ايرة احمد</h1>
+            <h3 id="second-text">ابداع التصميم</h3>
+          </div>
+        </div>
+<!-- aboutMe -->
+<div sty class="card mebody" data-state="#about">
+    <div class="card-header">
+      <div class="card-cover" style="background-image: url('https://images.unsplash.com/photo-1549068106-b024baf5062d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=934&q=80')"></div>
+      <img class="card-avatar" src="https://images.unsplash.com/photo-1549068106-b024baf5062d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=934&q=80" alt="avatar" />
+      <h1 class="card-fullname">William Rocheald</h1>
+      <h2 class="card-jobtitle">UI Developer</h2>
+    </div>
+    <div class="card-main">
+      <div class="card-section is-active" id="about">
+        <div class="card-content">
+          <div class="card-subtitle">ABOUT</div>
+          <p class="card-desc">Whatever tattooed stumptown art party sriracha gentrify hashtag intelligentsia readymade schlitz brooklyn disrupt.
+          </p>
+        </div>
+        <div class="card-social">
+          <a href="#"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path d="M15.997 3.985h2.191V.169C17.81.117 16.51 0 14.996 0c-3.159 0-5.323 1.987-5.323 5.639V9H6.187v4.266h3.486V24h4.274V13.267h3.345l.531-4.266h-3.877V6.062c.001-1.233.333-2.077 2.051-2.077z" /></svg></a>
+          <a href="#"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+              <path d="M512 97.248c-19.04 8.352-39.328 13.888-60.48 16.576 21.76-12.992 38.368-33.408 46.176-58.016-20.288 12.096-42.688 20.64-66.56 25.408C411.872 60.704 384.416 48 354.464 48c-58.112 0-104.896 47.168-104.896 104.992 0 8.32.704 16.32 2.432 23.936-87.264-4.256-164.48-46.08-216.352-109.792-9.056 15.712-14.368 33.696-14.368 53.056 0 36.352 18.72 68.576 46.624 87.232-16.864-.32-33.408-5.216-47.424-12.928v1.152c0 51.008 36.384 93.376 84.096 103.136-8.544 2.336-17.856 3.456-27.52 3.456-6.72 0-13.504-.384-19.872-1.792 13.6 41.568 52.192 72.128 98.08 73.12-35.712 27.936-81.056 44.768-130.144 44.768-8.608 0-16.864-.384-25.12-1.44C46.496 446.88 101.6 464 161.024 464c193.152 0 298.752-160 298.752-298.688 0-4.64-.16-9.12-.384-13.568 20.832-14.784 38.336-33.248 52.608-54.496z" /></svg></a>
+          <a href="#"><svg viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+              <path d="M301 256c0 24.852-20.148 45-45 45s-45-20.148-45-45 20.148-45 45-45 45 20.148 45 45zm0 0" />
+              <path d="M332 120H180c-33.086 0-60 26.914-60 60v152c0 33.086 26.914 60 60 60h152c33.086 0 60-26.914 60-60V180c0-33.086-26.914-60-60-60zm-76 211c-41.355 0-75-33.645-75-75s33.645-75 75-75 75 33.645 75 75-33.645 75-75 75zm86-146c-8.285 0-15-6.715-15-15s6.715-15 15-15 15 6.715 15 15-6.715 15-15 15zm0 0" />
+              <path d="M377 0H135C60.562 0 0 60.563 0 135v242c0 74.438 60.563 135 135 135h242c74.438 0 135-60.563 135-135V135C512 60.562 451.437 0 377 0zm45 332c0 49.625-40.375 90-90 90H180c-49.625 0-90-40.375-90-90V180c0-49.625 40.375-90 90-90h152c49.625 0 90 40.375 90 90zm0 0" /></svg></a>
+          <a href="#"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path d="M23.994 24v-.001H24v-8.802c0-4.306-.927-7.623-5.961-7.623-2.42 0-4.044 1.328-4.707 2.587h-.07V7.976H8.489v16.023h4.97v-7.934c0-2.089.396-4.109 2.983-4.109 2.549 0 2.587 2.384 2.587 4.243V24zM.396 7.977h4.976V24H.396zM2.882 0C1.291 0 0 1.291 0 2.882s1.291 2.909 2.882 2.909 2.882-1.318 2.882-2.909A2.884 2.884 0 002.882 0z" /></svg></a>
+        </div>
+      </div>
+      <div class="card-section" id="experience">
+        <div class="card-content">
+          <div class="card-subtitle">WORK EXPERIENCE</div>
+          <div class="card-timeline">
+            <div class="card-item" data-year="2014">
+              <div class="card-item-title">Front-end Developer at <span>JotForm</span></div>
+              <div class="card-item-desc">Disrupt stumptown retro everyday carry unicorn.</div>
+            </div>
+            <div class="card-item" data-year="2016">
+              <div class="card-item-title">UI Developer at <span>GitHub</span></div>
+              <div class="card-item-desc">Developed new conversion funnels and disrupt.</div>
+            </div>
+            <div class="card-item" data-year="2018">
+              <div class="card-item-title">Illustrator at <span>Google</span></div>
+              <div class="card-item-desc">Onboarding illustrations for App.</div>
+            </div>
+            <div class="card-item" data-year="2020">
+              <div class="card-item-title">Full-Stack Developer at <span>CodePen</span></div>
+              <div class="card-item-desc">Responsible for the encomposing brand expreience.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-section" id="contact">
+        <div class="card-content">
+          <div class="card-subtitle">CONTACT</div>
+          <div class="card-contact-wrapper">
+            <div class="card-contact">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z" />
+                <circle cx="12" cy="10" r="3" /></svg>
+              Algonquin Rd, Three Oaks Vintage, MI, 49128
+            </div>
+            <div class="card-contact">
+              <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z" /></svg>(269) 756-9809</div>
+            <div class="card-contact">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+                <path d="M22 6l-10 7L2 6" /></svg>
+              william@rocheald.com
+            </div>
+            <button class="contact-me">WORK TOGETHER</button>
+          </div>
+        </div>
+      </div>
+      <div class="card-buttons">
+        <button data-section="#about" class="is-active">ABOUT</button>
+        <button data-section="#experience">EXPERIENCE</button>
+        <button data-section="#contact">CONTACT</button>
+      </div>
+    </div>
+  </div>
+    <!-- javascript -->
+        <script src="./unpkg.js"></script>
+        <script src="./ScrollMagic.min.js"></script>
+    <script>
+         // Smooth Scroll
+         const lenis = new Lenis()
+        lenis.on('scroll', (e) => {
+            console.log(e)
+        })
+        function raf(time) {
+            lenis.raf(time)
+            requestAnimationFrame(raf)
+        }
+        requestAnimationFrame(raf)
+
+
+        // Scroll Down - Button
+        document.addEventListener('DOMContentLoaded', function () {
+            const scrollBtn = document.getElementById('scrollBtn');
+            window.addEventListener('scroll', function () {
+                const box = document.querySelector('.scrollBtn');
+                if (window.scrollY > 0) {
+                    box.classList.add('move');
+                } else {
+                    box.classList.remove('move');
+                }
+            });
+        });
+
+
+        // Preloader Text 
+        window.addEventListener('load', function () {
+            const preloader = document.getElementById('preloader');
+            const firstText = document.getElementById('first-text');
+            const secondText = document.getElementById('second-text');
+            // Show the first text
+            firstText.style.opacity = '1';
+            // loading animation
+            setTimeout(function () {
+                firstText.style.opacity = '0';
+                secondText.style.opacity = '1';
+            }, 1000);
+            setTimeout(function () {
+                preloader.style.display = 'none';
+            }, 4000);
+        });
+
+
+        // Loader Video 
+        window.addEventListener('load', function () {
+            document.body.classList.add('overflow-hidden'); // body - overflow hidden
+            document.documentElement.classList.add('overflow-hidden'); // html - overflow hidden
+            setTimeout(function () {
+                const loaderVideo = document.getElementById('loaderVideo');
+                loaderVideo.style.width = '90%';
+                loaderVideo.style.height = '90%';
+                loaderVideo.style.transform = 'translate(-50%, -50%)';
+                loaderVideo.style.top = '50%';
+                loaderVideo.style.left = '50%';
+                loaderVideo.style.position = 'fixed';
+                loaderVideo.style.borderRadius = '12px';
+
+            }, 2000);
+            setTimeout(() => {
+                if (window.matchMedia('(max-width: 576px)').matches) {
+                    loaderVideo.style.width = '220px';
+                    loaderVideo.style.height = '220px';
+                    loaderVideo.style.top = '25%';
+                    loaderVideo.style.left = '24px';
+                    loaderVideo.style.right = 'auto';
+                    loaderVideo.style.transform = 'translate(0%, -25%)';
+                } else if (window.matchMedia('(max-width: 767px)').matches) {
+                    loaderVideo.style.width = '220px';
+                    loaderVideo.style.height = '220px';
+                    loaderVideo.style.left = 'auto';
+                    loaderVideo.style.right = '40px';
+                    loaderVideo.style.transform = 'translate(0%, -50%)';
+                } else if (window.matchMedia('(max-width: 991px)').matches) {
+                    loaderVideo.style.width = '310px';
+                    loaderVideo.style.height = '310px';
+                    loaderVideo.style.left = 'auto';
+                    loaderVideo.style.right = '40px';
+                    loaderVideo.style.transform = 'translate(0%, -50%)';
+                } else if (window.matchMedia('(max-width: 1199px)').matches) {
+                    loaderVideo.style.width = '400px';
+                    loaderVideo.style.height = '400px';
+                    loaderVideo.style.left = 'auto';
+                    loaderVideo.style.right = '60px';
+                    loaderVideo.style.transform = 'translate(0%, -50%)';
+                } else if (window.matchMedia('(max-width: 1399px)').matches) {
+                    loaderVideo.style.width = '450px';
+                    loaderVideo.style.height = '450px';
+                    loaderVideo.style.left = 'auto';
+                    loaderVideo.style.right = '80px';
+                    loaderVideo.style.transform = 'translate(0%, -50%)';
+                } else {
+                    loaderVideo.style.width = '500px';
+                    loaderVideo.style.height = '500px';
+                    loaderVideo.style.top = '50%';
+                    loaderVideo.style.left = 'auto';
+                    loaderVideo.style.right = '100px';
+                    loaderVideo.style.transform = 'translate(0%, -50%)';
+                    loaderVideo.style.position = 'absolute';
+                }
+                document.body.classList.remove('overflow-hidden'); // body - overflow visible
+                document.documentElement.classList.remove('overflow-hidden'); // html - overflow visible
+            }, 3000); // Adjust the time as needed
+        });
+
+
+        // ScrollMagic
+        var controller = new ScrollMagic.Controller({ loglevel: 3 });
+        new ScrollMagic.Scene({
+            triggerElement: "#section2",
+            triggerHook: "onEnter",
+            duration: "100%"
+        }).setPin("#section1 .pinWrapper", {
+            pushFollowers: false
+        }).addTo(controller);
+        new ScrollMagic.Scene({
+            triggerElement: "#section2",
+            triggerHook: "onEnter",
+            duration: "200%"
+        }).setPin("#section2 .pinWrapper", {
+            pushFollowers: false
+        }).addTo(controller);
+        new ScrollMagic.Scene({
+            triggerElement: "#section3",
+            triggerHook: "onEnter",
+            duration: "200%"
+        }).setPin("#section3 .pinWrapper", {
+            pushFollowers: false
+        }).addTo(controller);
+        new ScrollMagic.Scene({
+            triggerElement: "#section4",
+            triggerHook: "onEnter",
+            duration: "100%"
+        }).setPin("#section4 .pinWrapper", {
+            pushFollowers: false
+        }).addTo(controller);
+        new ScrollMagic.Scene({
+            triggerElement: "#section5",
+            triggerHook: "onEnter",
+            duration: "100%"
+        }).setPin("#section5 .pinWrapper", {
+            pushFollowers: false
+        }).addTo(controller);
+        new ScrollMagic.Scene({
+            triggerElement: "#section6",
+            triggerHook: "onEnter",
+            duration: "100%"
+        }).setPin("#section6 .pinWrapper", {
+            pushFollowers: false
+        }).addTo(controller);
+        new ScrollMagic.Scene({
+            triggerElement: "#section7",
+            triggerHook: "onEnter",
+            duration: "100%"
+        }).setPin("#section7 .pinWrapper", {
+            pushFollowers: false
+        }).addTo(controller);
+        new ScrollMagic.Scene({
+            triggerElement: "#section8",
+            triggerHook: "onEnter",
+            duration: "100%"
+        }).setPin("#section8 .pinWrapper", {
+            pushFollowers: false
+        }).addTo(controller);
+        new ScrollMagic.Scene({
+            triggerElement: "#section9",
+            triggerHook: "onEnter",
+            duration: "100%"
+        }).setPin("#section9 .pinWrapper", {
+            pushFollowers: false
+        }).addTo(controller);
+       
+
+        
+
+    </script>
+      </body>
+</body>
+</html>
